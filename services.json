@@ -1,0 +1,11 @@
+{
+    "version": "1.0.0",
+    "description": "A simple Python-Server, which offers geometry services.",
+    "services": [
+        {
+            "name": "ConvexHull",
+            "description": "Calculates the convex hull from a GeoJSON FeatureCollection.",
+            "arguments": [ "FeatureCollection" ]
+        }
+    ]
+}
