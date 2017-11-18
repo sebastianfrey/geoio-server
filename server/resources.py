@@ -1,4 +1,5 @@
 import json
+import sys
 
 from flask import request
 from flask_restful import reqparse, Resource
@@ -34,4 +35,12 @@ class ConvexHull(Resource):
         try:
             return convex_hull(args.collection)
         except Exception as error:
-            return abort(str(error))
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            traceback_details = {
+                'filename': exc_traceback.tb_frame.f_code.co_filename,
+                'lineno'  : exc_traceback.tb_lineno,
+                'name'    : exc_traceback.tb_frame.f_code.co_name,
+                'message' : error
+            }
+
+            return abort(str(traceback_details))
