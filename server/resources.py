@@ -28,6 +28,9 @@ class ConvexHull(Resource):
         self.reqparse = reqparse.RequestParser()
         self.reqparse.add_argument('collection', type=dict, location='json', required=True)
         super(ConvexHull, self).__init__()
+    
+    def options(self):
+        pass
 
     def post(self):
         """The convex hull handler"""
